@@ -11,11 +11,14 @@ import UIKit
 import Parse
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -28,29 +31,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else {
             self.presentImagePickerFor(.PhotoLibrary)
         }
+    }
+    
+    // MARK: UIAlert
+    
+    func presentActionSheet() {
         
-//        if let image = self.imageView.image {
-//            API.uploadImage(image) { (success) -> () in
-//                if success {
-//                    sender.enabled = true
-//                    self.presentAlertView()
-//                }
-//            }
-//        }
+        let alertController = UIAlertController(title: "", message: "Please choose your source.", preferredStyle: .ActionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
+            self.presentImagePickerFor(.Camera)
+        }
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) -> Void in
+            self.presentImagePickerFor(.PhotoLibrary)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        alertController.addAction(cameraAction)
+        alertController.addAction(photoLibraryAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func presentAlertView() {
         let alertController = UIAlertController(title: "", message: "Image successfully uploaded.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func presentActionSheet() {
-        let alertController = UIAlertController(title: "", message: "Please choose your source.", preferredStyle: .ActionSheet)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
-            
-            self.presentImagePickerFor(.Camera)
-        }
+    // MARK: UIImagePickerController Delegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.imageView.image = image
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func presentImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
@@ -60,4 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
