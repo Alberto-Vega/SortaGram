@@ -63,7 +63,51 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func filtersButtonPressed(sender: UIButton) {
-        print("YAY!")
+        presentFilterAlert()
+        print("presenteing alert")
+    }
+    
+    func presentFilterAlert() {
+        
+        let alertController = UIAlertController(title: "Filters!", message: "Pick an awesome filter!!", preferredStyle: .ActionSheet)
+        
+        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage {
+                self.imageView.image = filteredImage
+                }
+            })
+        }
+        
+        let BWFilterAction = UIAlertAction(title: "Black & White", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyBWEfect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        
+        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
+            
+            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
+                
+                if let filteredImage = filteredImage {
+                    self.imageView.image = filteredImage
+                }
+            })
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        alertController.addAction(vintageFilterAction)
+        alertController.addAction(BWFilterAction)
+        alertController.addAction(chromeFilterAction)
+        alertController.addAction(cancelAction)
+        
     }
     // MARK: UIImagePickerController Delegate
     
