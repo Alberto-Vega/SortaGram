@@ -30,10 +30,19 @@
                                     <action selector="addImageButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0xq-1O-fSY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Z4-jhh">
+                                <rect key="frame" x="20" y="20" width="42" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Filters"/>
+                                <connections>
+                                    <action selector="filtersButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VrO-bN-TpJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JpO-Z4-jhh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="GTS-bk-iGQ"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IVX-Lz-Htc"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="jKk-q1-lm6" secondAttribute="bottom" id="KU0-Hn-CKE"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="centerX" secondItem="jKk-q1-lm6" secondAttribute="centerX" id="OhT-c8-dqr"/>
@@ -47,6 +56,7 @@
                             <constraint firstItem="6Bg-la-emb" firstAttribute="width" secondItem="jKk-q1-lm6" secondAttribute="width" id="r0E-JU-63s"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sGV-Fd-8ef"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ssy-Vm-Jfe"/>
+                            <constraint firstItem="JpO-Z4-jhh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="wGC-Gc-k8B"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -65,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="342"/>
+            <point key="canvasLocation" x="1257" y="349"/>
         </scene>
         <!--Item-->
         <scene sceneID="MCM-JV-Ohm">
