@@ -27,22 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        self.setupParse()
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
-        Parse.enableLocalDatastore()
+//        Parse.enableLocalDatastore()
 
         // ****************************************************************************
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
         //
-        // Uncomment and fill in with your Parse credentials:
-        Parse.setApplicationId("JL5SOkkgjzED0Vn1FMIUL7dqj8iQLustJAD4pVOR",
-            clientKey: "1efc6O4FYzivC6we9JLIfqAbBngSowbpJQW0bhwv")
-        // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
-        // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-        // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
-        // PFFacebookUtils.initializeFacebook()
-        // ****************************************************************************
+ 
 
         PFUser.enableAutomaticUser()
 
@@ -69,35 +64,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        //
-        //  Swift 1.2
-        //
-        //        if application.respondsToSelector("registerUserNotificationSettings:") {
-        //            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        //            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
-
-        //
-        //  Swift 2.0
-        //
-        //        if #available(iOS 8.0, *) {
-        //            let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-        //            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
 
         return true
     }
 
+    func setupParse() {
+        
+        Parse.setApplicationId(kParseApplicationId,
+            clientKey: kParseApplicationClientKey)
+    }
     //--------------------------------------
     // MARK: Push Notifications
     //--------------------------------------

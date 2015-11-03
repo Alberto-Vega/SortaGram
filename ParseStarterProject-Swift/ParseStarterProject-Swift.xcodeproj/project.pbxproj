@@ -19,6 +19,7 @@
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		BF432FFA1BE840D100D0E183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFB1BE8416300D0E183 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
+		BF432FFE1BE85A7900D0E183 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFD1BE85A7900D0E183 /* API.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BF432FFB1BE8416300D0E183 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BF432FFD1BE85A7900D0E183 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				BF432FFB1BE8416300D0E183 /* Constants.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				BF432FFD1BE85A7900D0E183 /* API.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -212,6 +215,7 @@
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				BF432FFE1BE85A7900D0E183 /* API.swift in Sources */,
 				BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,12 +318,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
 			};
@@ -329,12 +333,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
 			};
