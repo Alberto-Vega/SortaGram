@@ -17,6 +17,8 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
+		BF432FFA1BE840D100D0E183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFB1BE8416300D0E183 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BF432FFB1BE8416300D0E183 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 			children = (
 				814C3AC81B69877600E307BB /* Images.xcassets */,
 				814C3AC91B69877600E307BB /* Info.plist */,
+				BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				BF432FFB1BE8416300D0E183 /* Constants.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
@@ -174,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF432FFA1BE840D100D0E183 /* Launch Screen.storyboard in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 			);
@@ -205,6 +212,7 @@
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
