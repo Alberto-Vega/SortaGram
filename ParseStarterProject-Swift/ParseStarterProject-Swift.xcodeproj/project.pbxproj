@@ -46,6 +46,7 @@
 		BF432FFF1BE9271E00D0E183 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		BF4330011BE9317E00D0E183 /* ImageResizerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizerExtension.swift; sourceTree = "<group>"; };
 		BF93C6B11BE97C4F00799CB3 /* NumberOfWords.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NumberOfWords.playground; sourceTree = "<group>"; };
+		BF93C6B21BE9816400799CB3 /* OddNumberFinder.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = OddNumberFinder.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				BF93C6B21BE9816400799CB3 /* OddNumberFinder.playground */,
 				BF93C6B11BE97C4F00799CB3 /* NumberOfWords.playground */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
