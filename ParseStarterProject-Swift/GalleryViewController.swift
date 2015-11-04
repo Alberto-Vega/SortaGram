@@ -7,13 +7,39 @@
 //
 
 import UIKit
+import Parse
 
-class GalleryViewController:UIViewController, UICollectionViewDataSource,UICollectionViewFlowLayout {
+
+class GalleryViewController: UIViewController, UICollectionViewDataSource,UICollectionViewFlowLayout {
+    
+    var statuses = [Status]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+       
+        let query = PFQuery(className:"Status")
+        query.whereKeyExists("image")
+        
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        print("Succeeded downloading \(object.objectId)")
+                        
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+               // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,7 +62,7 @@ class GalleryViewController:UIViewController, UICollectionViewDataSource,UIColle
                 return CGSizeMake(100.0, 100.0)
         
             }
-    }
+    
     
     
 

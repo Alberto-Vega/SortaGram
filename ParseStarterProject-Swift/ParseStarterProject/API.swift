@@ -12,6 +12,7 @@ import Parse
 typealias ParseCompletionHandler = (success: Bool) -> ()
 
 class API {
+    
     class func uploadImage(image: UIImage, completion: ParseCompletionHandler) {
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             let imageFile = PFFile(name: "image", data: imageData)
