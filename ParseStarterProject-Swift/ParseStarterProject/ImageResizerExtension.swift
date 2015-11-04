@@ -14,6 +14,7 @@ extension UIImage {
         
         UIGraphicsBeginImageContext(size)
         image.drawInRect(CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+        
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
