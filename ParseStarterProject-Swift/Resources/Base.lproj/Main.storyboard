@@ -30,33 +30,55 @@
                                     <action selector="addImageButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0xq-1O-fSY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Z4-jhh">
-                                <rect key="frame" x="20" y="20" width="42" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3U-DB-YZk">
+                                <rect key="frame" x="191" y="28" width="219" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Z4-jhh">
+                                        <rect key="frame" x="0.0" y="0.0" width="85" height="24"/>
+                                        <animations/>
+                                        <state key="normal" title="Apply Filters"/>
+                                        <connections>
+                                            <action selector="filtersButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VrO-bN-TpJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scj-ws-JKa">
+                                        <rect key="frame" x="124" y="0.0" width="95" height="22"/>
+                                        <animations/>
+                                        <state key="normal" title="Upload Image"/>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <state key="normal" title="Filters"/>
-                                <connections>
-                                    <action selector="filtersButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VrO-bN-TpJ"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="JpO-Z4-jhh" firstAttribute="top" secondItem="a3U-DB-YZk" secondAttribute="top" id="1fR-Wc-QRF"/>
+                                    <constraint firstItem="scj-ws-JKa" firstAttribute="leading" secondItem="JpO-Z4-jhh" secondAttribute="trailing" constant="39" id="MmI-qV-u7C"/>
+                                    <constraint firstAttribute="bottom" secondItem="JpO-Z4-jhh" secondAttribute="bottom" id="Ynt-vm-gyF"/>
+                                    <constraint firstAttribute="bottom" secondItem="scj-ws-JKa" secondAttribute="bottom" constant="2" id="ZnO-cm-fhZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="scj-ws-JKa" secondAttribute="trailing" id="jIJ-Ql-9sP"/>
+                                    <constraint firstItem="scj-ws-JKa" firstAttribute="top" secondItem="a3U-DB-YZk" secondAttribute="top" id="pv5-i6-JAl"/>
+                                    <constraint firstItem="JpO-Z4-jhh" firstAttribute="leading" secondItem="a3U-DB-YZk" secondAttribute="leading" id="tEB-xO-pZ6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JpO-Z4-jhh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="GTS-bk-iGQ"/>
+                            <constraint firstItem="a3U-DB-YZk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Gms-8b-uGC"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IVX-Lz-Htc"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="jKk-q1-lm6" secondAttribute="bottom" id="KU0-Hn-CKE"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="centerX" secondItem="jKk-q1-lm6" secondAttribute="centerX" id="OhT-c8-dqr"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rvr-P0-FWr"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="SEa-af-Pxw"/>
+                            <constraint firstItem="a3U-DB-YZk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="SjY-fr-IfA"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="centerY" secondItem="jKk-q1-lm6" secondAttribute="centerY" id="Wm8-JW-rhb"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="height" secondItem="jKk-q1-lm6" secondAttribute="height" id="dfp-na-Xch"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Bg-la-emb" secondAttribute="bottom" id="eRb-B4-LcA"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="geW-vH-dqK"/>
+                            <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="a3U-DB-YZk" secondAttribute="bottom" constant="8" symbolic="YES" id="hdg-pV-clW"/>
                             <constraint firstAttribute="trailing" secondItem="6Bg-la-emb" secondAttribute="trailing" id="qol-wI-ckP"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="width" secondItem="jKk-q1-lm6" secondAttribute="width" id="r0E-JU-63s"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sGV-Fd-8ef"/>
                             <constraint firstItem="6Bg-la-emb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ssy-Vm-Jfe"/>
-                            <constraint firstItem="JpO-Z4-jhh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="wGC-Gc-k8B"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -75,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="349"/>
+            <point key="canvasLocation" x="1323" y="287"/>
         </scene>
         <!--Item-->
         <scene sceneID="MCM-JV-Ohm">
@@ -95,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Lt-VO-nm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="1076"/>
+            <point key="canvasLocation" x="972" y="1111"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="DCF-jU-GTB">
