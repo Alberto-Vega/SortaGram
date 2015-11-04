@@ -26,11 +26,9 @@ class FilterService {
         let options = [kCIContextOutputColorSpace : NSNull()]
         let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
         let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
-        
         let outputImage = filter.outputImage
         let extent = outputImage!.extent
         let cgImage = gpuContext.createCGImage(outputImage!, fromRect: extent)
-        
         let finalImage = UIImage(CGImage: cgImage)
         
         return finalImage
@@ -40,7 +38,6 @@ class FilterService {
         
         let filterName = "CIPhotoEffectTransfer"
         let displayName = "Vintage"
-        
         let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
         
         completion(filteredImage: finalImage, name: displayName)
@@ -54,7 +51,6 @@ class FilterService {
         
         let filterName = "CIPhotoEffectMono"
         let displayName = "Black and White"
-        
         let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
         
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
@@ -62,12 +58,10 @@ class FilterService {
         }
     }
     
-    
     class func applyChromeEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
         
         let filterName = "CIPhotoEffectChrome"
         let displayName = "Chrome"
-        
         let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
         
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in

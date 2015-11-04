@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -36,7 +36,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func presentActionSheet() {
         
         let alertController = UIAlertController(title: "", message: "Please choose your source.", preferredStyle: .ActionSheet)
-        
         let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (action) -> Void in
             self.presentImagePickerFor(.Camera)
         }
@@ -46,7 +45,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
         alertController.addAction(cameraAction)
         alertController.addAction(photoLibraryAction)
         alertController.addAction(cancelAction)
@@ -55,6 +53,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func presentAlertView() {
+        
         let alertController = UIAlertController(title: "", message: "Image successfully uploaded.", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(okAction)
@@ -62,6 +61,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func filtersButtonPressed(sender: UIButton) {
+        
         presentFilterAlert()
         print("presenteing alert")
     }
@@ -69,7 +69,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func uploadImageButtonPressed(sender: UIButton) {
         
         sender.enabled = false
-        
         if let image = self.imageView.image {
             API.uploadImage(image) { (success) -> () in
                 if success {
@@ -85,11 +84,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let alertController = UIAlertController(title: "Filters!", message: "Pick an awesome filter!!", preferredStyle: .ActionSheet)
         
         let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
-            
             FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
                 if let filteredImage = filteredImage {
-                self.imageView.image = filteredImage
+                    self.imageView.image = filteredImage
                 }
             })
         }
