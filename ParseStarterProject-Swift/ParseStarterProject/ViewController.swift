@@ -24,7 +24,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
-        
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             self.presentActionSheet()
         } else {
@@ -67,6 +66,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("presenteing alert")
     }
     
+    @IBAction func uploadImageButtonPressed(sender: UIButton) {
+        
+        sender.enabled = false
+        
+        if let image = self.imageView.image {
+            API.uploadImage(image) { (success) -> () in
+                if success {
+                    sender.enabled = true
+                    self.presentAlertView()
+                }
+            }
+        }
+    }
+    
     func presentFilterAlert() {
         
         let alertController = UIAlertController(title: "Filters!", message: "Pick an awesome filter!!", preferredStyle: .ActionSheet)
@@ -107,7 +120,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alertController.addAction(BWFilterAction)
         alertController.addAction(chromeFilterAction)
         alertController.addAction(cancelAction)
-        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     // MARK: UIImagePickerController Delegate
     

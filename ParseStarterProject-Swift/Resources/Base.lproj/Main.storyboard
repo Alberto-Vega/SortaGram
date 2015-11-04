@@ -45,6 +45,9 @@
                                         <rect key="frame" x="124" y="0.0" width="95" height="22"/>
                                         <animations/>
                                         <state key="normal" title="Upload Image"/>
+                                        <connections>
+                                            <action selector="uploadImageButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5HP-iy-OdU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -97,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="287"/>
+            <point key="canvasLocation" x="1190" y="342"/>
         </scene>
         <!--Item-->
         <scene sceneID="MCM-JV-Ohm">
