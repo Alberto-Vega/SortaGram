@@ -17,6 +17,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Call the GalleryViewController class
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,6 +25,7 @@
 		BF7CA8551BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		BF7CA8591BEABE5F008ACAD2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		BF7CA85C1BEAC56C008ACAD2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA85B1BEAC56C008ACAD2 /* Status.swift */; settings = {ASSET_TAGS = (); }; };
+		BF7CA8981BEBE1B2008ACAD2 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = ../GalleryViewController.swift; sourceTree = "<group>"; };
 		BF7CA85B1BEAC56C008ACAD2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				BF7CA8571BEABD29008ACAD2 /* Controllers */,
 				BF7CA8561BEABD08008ACAD2 /* Views */,
 				BF432FFD1BE85A7900D0E183 /* API.swift */,
+				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 			);
 			path = ParseStarterProject;
@@ -262,6 +265,7 @@
 				BF7CA85C1BEAC56C008ACAD2 /* Status.swift in Sources */,
 				BF7CA8591BEABE5F008ACAD2 /* GalleryViewController.swift in Sources */,
 				BF4330021BE9317E00D0E183 /* ImageResizerExtension.swift in Sources */,
+				BF7CA8981BEBE1B2008ACAD2 /* CustomFlowLayout.swift in Sources */,
 				BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
