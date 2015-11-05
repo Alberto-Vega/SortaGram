@@ -44,7 +44,7 @@
 		81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Resources/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		BF432FFB1BE8416300D0E183 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF432FFD1BE85A7900D0E183 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BF432FFF1BE9271E00D0E183 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
@@ -78,7 +78,6 @@
 			children = (
 				814C3AC81B69877600E307BB /* Images.xcassets */,
 				814C3AC91B69877600E307BB /* Info.plist */,
-				BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -106,15 +105,12 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
-				BF432FFF1BE9271E00D0E183 /* FilterService.swift */,
-				BF4330011BE9317E00D0E183 /* ImageResizerExtension.swift */,
-				BF432FFB1BE8416300D0E183 /* Constants.swift */,
+				BFB5F80A1BEC223D00A35493 /* Supporting Files */,
 				BF7CA85A1BEAC38B008ACAD2 /* Model */,
 				BF7CA8571BEABD29008ACAD2 /* Controllers */,
 				BF7CA8561BEABD08008ACAD2 /* Views */,
-				BF432FFD1BE85A7900D0E183 /* API.swift */,
-				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -156,6 +152,7 @@
 				BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */,
+				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -163,9 +160,20 @@
 		BF7CA85A1BEAC38B008ACAD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF432FFF1BE9271E00D0E183 /* FilterService.swift */,
+				BF432FFD1BE85A7900D0E183 /* API.swift */,
+				BF4330011BE9317E00D0E183 /* ImageResizerExtension.swift */,
 				BF7CA85B1BEAC56C008ACAD2 /* Status.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		BFB5F80A1BEC223D00A35493 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF432FFB1BE8416300D0E183 /* Constants.swift */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -16,26 +16,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // ...
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
             if let galleryViewController = viewControllers[1] as? GalleryViewController {
                 galleryViewController.delegate = self
             }
-            
         }
-        
     }
-        
+    
     func galleryViewControllerDidFinish(image: UIImage) {
         
         // Set this View Controllers image to image
         self.imageView.image = image
         // Get tabBar controller.
         self.tabBarController?.selectedIndex = 0
-        
-        // tabBarController.selectedIndex = 0
-//        print(image)
     }
     
     override func didReceiveMemoryWarning() {

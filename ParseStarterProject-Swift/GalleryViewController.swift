@@ -92,12 +92,9 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-//        let width = Floa
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         
-//        let screenWidth = screenSize.width
-//        let screenHeight = screenSize.height
         
         let size = (screenSize.width / 3) - 7
 
