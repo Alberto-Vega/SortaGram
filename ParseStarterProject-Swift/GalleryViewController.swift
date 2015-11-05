@@ -9,14 +9,22 @@
 import UIKit
 import Parse
 
+protocol GalleryVCDelegate {
+    
+    func galleryViewControllerDidFinish(image: UIImage)
+       
+}
 
 class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     var images = [UIImage]()
+    
+    var delegate:GalleryVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let delegate = GalleryVCDelegate.dissmissGalleryViewController(self)
         //Call the GalleryViewController class
     }
 
@@ -96,7 +104,19 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         return CGSizeMake(size, size)
         
             }
-
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if let delegate = self.delegate {
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell
+            
+            if let image = cell.imageView.image {
+                
+            delegate.galleryViewControllerDidFinish(image)
+           
+        }
+    }
+    }
     /*
     // MARK: - Navigation
 

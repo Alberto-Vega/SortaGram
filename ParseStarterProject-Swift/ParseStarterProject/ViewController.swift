@@ -10,25 +10,37 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryVCDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ...
+        if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
+            if let galleryViewController = viewControllers[1] as? GalleryViewController {
+                galleryViewController.delegate = self
+            }
+            
+        }
+        
+    }
+        
+    func galleryViewControllerDidFinish(image: UIImage) {
+        
+        // Set this View Controllers image to image
+        self.imageView.image = image
+        // Get tabBar controller.
+        self.tabBarController?.selectedIndex = 0
+        
+        // tabBarController.selectedIndex = 0
+//        print(image)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func addImageButtonSelected(sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            self.presentActionSheet()
-        } else {
-            self.presentImagePickerFor(.PhotoLibrary)
-        }
     }
     
     // MARK: UIAlert
@@ -58,6 +70,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+// MARK: Actions
+    
+    @IBAction func addImageButtonSelected(sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            self.presentActionSheet()
+        } else {
+            self.presentImagePickerFor(.PhotoLibrary)
+        }
     }
     
     @IBAction func filtersButtonPressed(sender: UIButton) {
