@@ -12,9 +12,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet weak var imageView: UIImageView!
     
-    
-    
-    
     class func identifier() -> String {
         return "CustomCollectionViewCell"
     }

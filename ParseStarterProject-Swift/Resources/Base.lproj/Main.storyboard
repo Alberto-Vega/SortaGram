@@ -105,7 +105,7 @@
         <!--Item-->
         <scene sceneID="MCM-JV-Ohm">
             <objects>
-                <viewController id="78D-JI-9SY" customClass="Custom" sceneMemberID="viewController">
+                <viewController id="78D-JI-9SY" customClass="GalleryViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E0a-RV-oBe"/>
                         <viewControllerLayoutGuide type="bottom" id="w6y-PU-BCD"/>
@@ -167,6 +167,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="za0-gd-abf"/>
+                    <connections>
+                        <outlet property="galleryCollectionView" destination="DKX-Ld-htn" id="02d-a4-whL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Lt-VO-nm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -184,7 +187,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="MV1-BJ-8ru"/>
-                        <segue destination="78D-JI-9SY" kind="relationship" relationship="viewControllers" id="Ghz-rF-a3n"/>
+                        <segue destination="78D-JI-9SY" kind="relationship" relationship="viewControllers" id="JeP-QY-DjJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19J-sL-dov" userLabel="First Responder" sceneMemberID="firstResponder"/>
