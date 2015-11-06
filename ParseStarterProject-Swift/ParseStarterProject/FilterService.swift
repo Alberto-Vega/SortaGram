@@ -67,5 +67,9 @@ class FilterService {
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
             completion(filteredImage: finalImage, name: displayName)
         }
+        
+        
+        
+        
     }
 }

@@ -96,7 +96,7 @@
                                             <constraint firstItem="SiZ-8B-4Wc" firstAttribute="top" secondItem="9OP-Nd-rmf" secondAttribute="top" id="pNw-wo-f0h"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="SiZ-8B-4Wc" id="XWb-DU-hWk"/>
+                                            <outlet property="filteredThumbnalImageView" destination="SiZ-8B-4Wc" id="1oL-Nn-ADv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

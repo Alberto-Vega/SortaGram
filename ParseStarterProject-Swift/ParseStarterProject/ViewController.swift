@@ -15,24 +15,50 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterTableView: UICollectionView!
     
-    var filtersThumbnails = [UIImage]()
-    var currentPhoto: UIImage?
+    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
+    
+    
+    
+    var currentPhoto: UIImage? {
+        didSet {
+            imageView.image = currentPhoto
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateData()
+//        generateData()
         // ...
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
             if let galleryViewController = viewControllers[1] as? GalleryViewController {
                 galleryViewController.delegate = self
+                self.filterTableView.reloadData()
+                
+//                filters.append(FilterService.applyBWEfect)
+//                
+//                filters.append(FilterService.applyBWEfect(image: UIImage, completion: { (filteredImage, name) -> Void in
+//                    <#code#>
+//                }))
+//                filters.append(FilterService.applyVintageEffect(image: UIImage, completion: { (filteredImage, name) -> Void in
+//                    <#code#>
+//                }))
+                
+
+
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.filterTableView.reloadData()
+
     }
     
     func galleryViewControllerDidFinish(image: UIImage) {
         
         // Set this View Controllers image to image
-        self.imageView.image = image
+        self.currentPhoto = image
+        self.imageView.image = self.currentPhoto
         // Get tabBar controller.
         self.tabBarController?.selectedIndex = 0
     }
@@ -43,17 +69,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    func generateData() {
-        for _ in 1...3 {
-            let image = self.imageView.image
-            if let image = image {
-            self.filtersThumbnails.append(image)
-            }
-        }
-        
-        self.filterTableView.reloadData()
-        
-    }
+//    func generateData() {
+//        for _ in 1...3 {
+//            
+////            let image = self.imageView.image
+//            if let image = image {
+//            self.filtersThumbnails.append(image)
+//            }
+//        }
+//        
+//        self.filterTableView.reloadData()
+//        
+//    }
     
     // MARK: UIAlert
     
@@ -84,7 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    // MARK: Filters
+    // MARK: Filters Switch index path case is index path index number
     
     func presentFilterAlert() {
         
@@ -127,7 +154,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
     }
 
-
 // MARK: Actions
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
@@ -160,7 +186,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
       // MARK: UIImagePickerController Delegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.imageView.image = image
+        currentPhoto = image
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -179,7 +205,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print("filter thumbnail count \(self.filtersThumbnails.count)")
         return 3
     }
     
@@ -187,8 +212,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as? CustomCollectionViewCell
         
-//        let image = self.filtersThumbnails[indexPath.row]
-//        cell.imageView.image = image
+//        let filteredThumbnailImage = self.filters[indexPath.row]
+        cell!.filteredThumbnalImageView.image = currentPhoto
         cell!.backgroundColor = UIColor.redColor()
         
         return cell!
@@ -199,11 +224,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         
         
-//        let size = (screenSize.width / 3) - 7
-        
-        return CGSizeMake(100 , 100
-        )
+        let size = (screenSize.width / 3) - 7
+        imageView.image = currentPhoto
+
+        return CGSizeMake(size, size)
         
     }
-
 }
