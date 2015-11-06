@@ -36,18 +36,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if let galleryViewController = viewControllers[1] as? GalleryViewController {
                 galleryViewController.delegate = self
                 self.filterTableView.reloadData()
-                
-//                filters.append(FilterService.applyBWEfect)
-//                
-//                filters.append(FilterService.applyBWEfect(image: UIImage, completion: { (filteredImage, name) -> Void in
-//                    <#code#>
-//                }))
-//                filters.append(FilterService.applyVintageEffect(image: UIImage, completion: { (filteredImage, name) -> Void in
-//                    <#code#>
-//                }))
-                
-
-
             }
         }
     }
@@ -71,19 +59,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
         
     }
-    
-//    func generateData() {
-//        for _ in 1...3 {
-//            
-////            let image = self.imageView.image
-//            if let image = image {
-//            self.filtersThumbnails.append(image)
-//            }
-//        }
-//        
-//        self.filterTableView.reloadData()
-//        
-//    }
     
     // MARK: UIAlert
     
@@ -114,7 +89,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-
 // MARK: Actions
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
@@ -164,10 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
-        
-        return 3
+        return 5
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -180,7 +151,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 cell.filteredThumbnalImageView.image = filteredImage
             })
         }
-        
         return cell
     }
 
@@ -189,12 +159,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         
-        
         let size = (screenSize.width / 3) - 7
         imageView.image = currentPhoto
 
         return CGSizeMake(size, size)
-        
     }
     
     func setupFilteredCell(indexPath: Int, image: UIImage, callback:(UIImage?) -> ()) {
@@ -212,8 +180,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
             callback(filteredImage)
         })
+    case 3:
+        FilterService.applyPixellateEffect(image, completion: { (filteredImage, name) -> Void in
+            callback(filteredImage)
+        })
+    case 4:
+        FilterService.applyPixellateEffect(image, completion: { (filteredImage, name) -> Void in
+            callback(filteredImage)
+        })
     default: print("Filter outbounds")
     }
-}
-
+ }
 }
