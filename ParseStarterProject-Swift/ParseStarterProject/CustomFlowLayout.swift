@@ -25,5 +25,4 @@ class CustomFlowLayout: UICollectionViewFlowLayout {
         self.minimumLineSpacing = 2.0
         self.minimumInteritemSpacing = 2.0
     }
-
 }

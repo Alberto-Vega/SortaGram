@@ -13,6 +13,10 @@ import Parse
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryVCDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var filterTableView: UICollectionView!
+    
+    var filters = [String]()
+    var currentPhoto: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,35 +69,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-
-// MARK: Actions
     
-    @IBAction func addImageButtonSelected(sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            self.presentActionSheet()
-        } else {
-            self.presentImagePickerFor(.PhotoLibrary)
-        }
-    }
-    
-    @IBAction func filtersButtonPressed(sender: UIButton) {
-        
-        presentFilterAlert()
-        print("presenteing alert")
-    }
-    
-    @IBAction func uploadImageButtonPressed(sender: UIButton) {
-        
-        sender.enabled = false
-        if let image = self.imageView.image {
-            API.uploadImage(image) { (success) -> () in
-                if success {
-                    sender.enabled = true
-                    self.presentAlertView()
-                }
-            }
-        }
-    }
+    // MARK: Filters
     
     func presentFilterAlert() {
         
@@ -135,7 +112,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alertController.addAction(cancelAction)
         self.presentViewController(alertController, animated: true, completion: nil)
     }
-    // MARK: UIImagePickerController Delegate
+
+
+// MARK: Actions
+    
+    @IBAction func addImageButtonSelected(sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            self.presentActionSheet()
+        } else {
+            self.presentImagePickerFor(.PhotoLibrary)
+        }
+    }
+    
+    @IBAction func filtersButtonPressed(sender: UIButton) {
+        
+        presentFilterAlert()
+        print("presenteing alert")
+    }
+    
+    @IBAction func uploadImageButtonPressed(sender: UIButton) {
+        
+        sender.enabled = false
+        if let image = self.imageView.image {
+            API.uploadImage(image) { (success) -> () in
+                if success {
+                    sender.enabled = true
+                    self.presentAlertView()
+                }
+            }
+        }
+    }
+    
+      // MARK: UIImagePickerController Delegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.imageView.image = image
@@ -152,4 +160,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // MARK: - UICollectionView
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 3
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as! CustomCollectionViewCell
+        
+        let image = self.images[indexPath.row]
+        cell.imageView.image = image
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        
+        
+        let size = (screenSize.width / 3) - 7
+        
+        return CGSizeMake(size, size)
+        
+    }
+
 }
