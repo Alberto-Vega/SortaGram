@@ -15,12 +15,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterTableView: UICollectionView!
     
-    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
+//    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
+    
+
     
     
     
     var currentPhoto: UIImage? {
         didSet {
+            filterTableView.reloadData()
             imageView.image = currentPhoto
         }
     }
@@ -111,48 +114,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    // MARK: Filters Switch index path case is index path index number
-    
-    func presentFilterAlert() {
-        
-        let alertController = UIAlertController(title: "Filters!", message: "Pick an awesome filter!!", preferredStyle: .ActionSheet)
-        
-        let vintageFilterAction = UIAlertAction(title: "Vintage", style: .Default) { (alert) -> Void in
-            FilterService.applyVintageEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                if let filteredImage = filteredImage {
-                    self.imageView.image = filteredImage
-                }
-            })
-        }
-        
-        let BWFilterAction = UIAlertAction(title: "Black & White", style: .Default) { (alert) -> Void in
-            
-            FilterService.applyBWEfect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
-                if let filteredImage = filteredImage {
-                    self.imageView.image = filteredImage
-                }
-            })
-        }
-        
-        let chromeFilterAction = UIAlertAction(title: "Chrome", style: .Default) { (alert) -> Void in
-            
-            FilterService.applyChromeEffect(self.imageView.image!, completion: { (filteredImage, name) -> Void in
-                
-                if let filteredImage = filteredImage {
-                    self.imageView.image = filteredImage
-                }
-            })
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        alertController.addAction(vintageFilterAction)
-        alertController.addAction(BWFilterAction)
-        alertController.addAction(chromeFilterAction)
-        alertController.addAction(cancelAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
 
 // MARK: Actions
     
@@ -166,7 +127,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func filtersButtonPressed(sender: UIButton) {
         
-        presentFilterAlert()
         print("presenteing alert")
     }
     
@@ -205,19 +165,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        
+        
         return 3
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as! CustomCollectionViewCell
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as? CustomCollectionViewCell
+        cell.filteredThumbnalImageView.image = nil
         
-//        let filteredThumbnailImage = self.filters[indexPath.row]
-        cell!.filteredThumbnalImageView.image = currentPhoto
-        cell!.backgroundColor = UIColor.redColor()
+        if let currentPhoto = currentPhoto {
+        setupFilteredCell(indexPath.row, image: currentPhoto, callback: { (filteredImage) -> () in
+                cell.filteredThumbnalImageView.image = filteredImage
+            })
+        }
         
-        return cell!
+        return cell
     }
+
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
@@ -230,4 +196,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return CGSizeMake(size, size)
         
     }
+    
+    func setupFilteredCell(indexPath: Int, image: UIImage, callback:(UIImage?) -> ()) {
+    switch indexPath {
+    case 0:
+        FilterService.applyBWEfect(image, completion: { (filteredImage, name) -> Void in
+                callback(filteredImage)
+        })
+    case 1:
+        FilterService.applyChromeEffect(image, completion: { (filteredImage, name) -> Void in
+            callback(filteredImage)
+
+        })
+    case 2:
+        FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
+            callback(filteredImage)
+        })
+    default: print("Filter outbounds")
+    }
+}
+
 }
