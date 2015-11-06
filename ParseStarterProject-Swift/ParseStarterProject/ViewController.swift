@@ -10,16 +10,17 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryVCDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryVCDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterTableView: UICollectionView!
     
-    var filters = [String]()
+    var filtersThumbnails = [UIImage]()
     var currentPhoto: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateData()
         // ...
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
             if let galleryViewController = viewControllers[1] as? GalleryViewController {
@@ -39,6 +40,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+    }
+    
+    func generateData() {
+        for _ in 1...3 {
+            let image = self.imageView.image
+            if let image = image {
+            self.filtersThumbnails.append(image)
+            }
+        }
+        
+        self.filterTableView.reloadData()
+        
     }
     
     // MARK: UIAlert
@@ -165,17 +179,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        print("filter thumbnail count \(self.filtersThumbnails.count)")
         return 3
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as? CustomCollectionViewCell
         
-        let image = self.images[indexPath.row]
-        cell.imageView.image = image
+//        let image = self.filtersThumbnails[indexPath.row]
+//        cell.imageView.image = image
+        cell!.backgroundColor = UIColor.redColor()
         
-        return cell
+        return cell!
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -183,9 +199,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let screenSize: CGRect = UIScreen.mainScreen().bounds
         
         
-        let size = (screenSize.width / 3) - 7
+//        let size = (screenSize.width / 3) - 7
         
-        return CGSizeMake(size, size)
+        return CGSizeMake(100 , 100
+        )
         
     }
 

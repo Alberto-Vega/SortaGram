@@ -149,10 +149,10 @@
 		BF7CA8571BEABD29008ACAD2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */,
 				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
+				BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
