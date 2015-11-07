@@ -21,13 +21,32 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     var images = [UIImage]()
     
     var delegate:GalleryVCDelegate?
+    var cellSize: CGFloat = 1.0 {
+        didSet {
+            galleryCollectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.galleryCollectionView.collectionViewLayout = CustomFlowLayout(columns: 3, separatorWidht: 8)
+        self.galleryCollectionView.collectionViewLayout = CustomFlowLayout(columns: cellSize, separatorWidht: 8)
 //        let delegate = GalleryVCDelegate.dissmissGalleryViewController(self)
         //Call the GalleryViewController class
+        
+        // Tap Gesture Recognizer
+        galleryCollectionView.userInteractionEnabled = true
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinchView:")
+        galleryCollectionView.gestureRecognizers = [pinchGesture]
+
+    }
+    
+    func pinchView(recognizer: UIPinchGestureRecognizer) {
+        self.cellSize = self.cellSize / recognizer.scale
+        recognizer.scale = 1.0
+        print(recognizer.scale)
+//        galleryCollectionView.reloadData()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +54,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         let query = PFQuery(className:"Status")
         query.whereKeyExists("image")
@@ -104,6 +123,10 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
            
         }
     }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(100.0 * self.cellSize, 100.0 * self.cellSize)
     }
     /*
     // MARK: - Navigation

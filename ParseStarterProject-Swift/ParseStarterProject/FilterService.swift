@@ -80,13 +80,13 @@ class FilterService {
 //    }
     
     
-    class func applyStarShineEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
-    let filterName = "CIStarShineGenerator"
-    let displayName = "Pixelate"
-    let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
-    
-    NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-    completion(filteredImage: finalImage, name: displayName)
-    }
-}
+//    class func applyStarShineEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
+//    let filterName = "CIStarShineGenerator"
+//    let displayName = "Pixelate"
+//    let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
+//    
+//    NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+//    completion(filteredImage: finalImage, name: displayName)
+//    }
+//}
 }

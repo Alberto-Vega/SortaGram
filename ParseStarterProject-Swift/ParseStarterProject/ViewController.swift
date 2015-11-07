@@ -16,11 +16,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var filterTableView: UICollectionView!
     
 //    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
-    
-
-    
-    
-    
+   
     var currentPhoto: UIImage? {
         didSet {
             filterTableView.reloadData()
@@ -37,6 +33,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 galleryViewController.delegate = self
                 self.filterTableView.reloadData()
             }
+        }
+        
+        // Tap Gesture Recognizer
+        imageView.userInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tapView:")
+        imageView.gestureRecognizers = [tapGesture]
+    }
+    
+    func tapView(gesture: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            self.presentActionSheet()
+        } else {
+            self.presentImagePickerFor(.PhotoLibrary)
         }
     }
     
@@ -89,7 +98,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-// MARK: Actions
+// MARK: @IBActions
     
     @IBAction func addImageButtonSelected(sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
@@ -99,6 +108,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    @IBAction func AddImagePressed(sender: UITapGestureRecognizer) {
+        print("Image Tapped")
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            self.presentActionSheet()
+        } else {
+            self.presentImagePickerFor(.PhotoLibrary)
+        }
+
+        
+    }
     @IBAction func filtersButtonPressed(sender: UIButton) {
         
         print("presenteing alert")
@@ -138,7 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -168,6 +187,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
     }
+   
+//MARK: Filters
     
     func setupFilteredCell(indexPath: Int, image: UIImage, callback:(UIImage?) -> ()) {
     switch indexPath {
@@ -184,10 +205,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
             callback(filteredImage)
         })
-    case 3:
-        FilterService.applyStarShineEffect(image, completion: { (filteredImage, name) -> Void in
-            callback(filteredImage)
-        })
+//    case 3:
+//        FilterService.applyStarShineEffect(image, completion: { (filteredImage, name) -> Void in
+//            callback(filteredImage)
+//        })
   
     default: print("Filter outbounds")
     }
