@@ -138,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -165,6 +165,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return CGSizeMake(size, size)
     }
     
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     func setupFilteredCell(indexPath: Int, image: UIImage, callback:(UIImage?) -> ()) {
     switch indexPath {
     case 0:
@@ -181,13 +185,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             callback(filteredImage)
         })
     case 3:
-        FilterService.applyPixellateEffect(image, completion: { (filteredImage, name) -> Void in
+        FilterService.applyStarShineEffect(image, completion: { (filteredImage, name) -> Void in
             callback(filteredImage)
         })
-    case 4:
-        FilterService.applyPixellateEffect(image, completion: { (filteredImage, name) -> Void in
-            callback(filteredImage)
-        })
+  
     default: print("Filter outbounds")
     }
  }

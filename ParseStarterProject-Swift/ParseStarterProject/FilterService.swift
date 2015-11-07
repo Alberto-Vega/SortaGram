@@ -69,15 +69,16 @@ class FilterService {
         }
     }
     
-    class func applyPixellateEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
-        let filterName = "CIPixellate"
-        let displayName = "Pixellate"
-        let finalImage = self.setupFilter(filterName, parameters: nil, image: image)
-        
-        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-        completion(filteredImage: finalImage, name: displayName)
-    }
-    }
+//    class func applyPixellateEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
+//        let filterName = "CIHexagonalPixellate"
+//        let displayName = "Pixellate"
+////        let finalImage = self.setupFilter(filterName, parameters: [CIAttributeTypePosition : CIAttributeTypeDistance ]?, image: image)
+//        let finalImage = CIFilter(name: filterName, withInputParameters:
+//        
+//        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+//        completion(filteredImage: finalImage, name: displayName)
+//    }
+    
     
     class func applyStarShineEffect(image: UIImage, completion: (filteredImage: UIImage?, name: String) -> Void) {
     let filterName = "CIStarShineGenerator"

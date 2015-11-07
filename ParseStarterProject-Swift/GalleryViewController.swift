@@ -24,6 +24,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.galleryCollectionView.collectionViewLayout = CustomFlowLayout(columns: 3, separatorWidht: 8)
 //        let delegate = GalleryVCDelegate.dissmissGalleryViewController(self)
         //Call the GalleryViewController class
     }
@@ -90,17 +92,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         return cell
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        
-        
-        let size = (screenSize.width / 3) - 7
-
-        return CGSizeMake(size, size)
-        
-            }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

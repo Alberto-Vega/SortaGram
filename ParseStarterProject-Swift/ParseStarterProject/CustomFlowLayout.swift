@@ -10,19 +10,18 @@ import UIKit
 
 class CustomFlowLayout: UICollectionViewFlowLayout {
     
-    init(rows: Int, columns: Int) {
+    init(columns: CGFloat, separatorWidht: CGFloat) {
         super.init()
-        self.setup()
-}
+        let frame = UIScreen.mainScreen().bounds
+        let width = CGRectGetWidth(frame)
+        let cellWidth = (width / columns) - separatorWidht
+        let size = CGSizeMake(cellWidth, cellWidth)
+        
+        self.itemSize = size
+        self.minimumInteritemSpacing = separatorWidht
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    func setup() {
-        self.itemSize = CGSizeMake(159, 159)
-        self.minimumLineSpacing = 2.0
-        self.minimumInteritemSpacing = 2.0
     }
 }
