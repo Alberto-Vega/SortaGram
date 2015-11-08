@@ -91,46 +91,23 @@
                                 </subviews>
                                 <animations/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bg-la-emb">
-                                <rect key="frame" x="240" y="68" width="92" height="153"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="addImageButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0xq-1O-fSY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mPx-Dd-4xM" secondAttribute="bottom" constant="8" id="03E-Rb-RED"/>
-                            <constraint firstItem="2Zo-aQ-GWt" firstAttribute="top" secondItem="6Bg-la-emb" secondAttribute="bottom" constant="1" id="0kH-vS-AZE"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="1Mt-QD-m2X"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6so-xv-uH8"/>
                             <constraint firstItem="mPx-Dd-4xM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A9k-80-ebW"/>
                             <constraint firstItem="2Zo-aQ-GWt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Cs9-qy-qP0"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IVX-Lz-Htc"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="jKk-q1-lm6" secondAttribute="bottom" id="KU0-Hn-CKE"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kgd-5Q-BRX"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2Zo-aQ-GWt" secondAttribute="bottom" constant="42" id="L6A-pz-B10"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="centerX" secondItem="jKk-q1-lm6" secondAttribute="centerX" id="OhT-c8-dqr"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="Pdg-sT-DzZ"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rvr-P0-FWr"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="SEa-af-Pxw"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="centerY" secondItem="jKk-q1-lm6" secondAttribute="centerY" id="Wm8-JW-rhb"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dC2-RR-tde"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="dtY-Fx-xNq"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6Bg-la-emb" secondAttribute="bottom" id="eRb-B4-LcA"/>
-                            <constraint firstItem="2Zo-aQ-GWt" firstAttribute="top" secondItem="6Bg-la-emb" secondAttribute="bottom" constant="1" id="gHt-Us-N0T"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="geW-vH-dqK"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jR7-kl-awd"/>
                             <constraint firstAttribute="trailing" secondItem="2Zo-aQ-GWt" secondAttribute="trailing" id="jRs-xi-bpI"/>
                             <constraint firstAttribute="trailing" secondItem="jKk-q1-lm6" secondAttribute="trailing" constant="20" symbolic="YES" id="nYz-dk-oRe"/>
-                            <constraint firstAttribute="trailing" secondItem="6Bg-la-emb" secondAttribute="trailing" id="qol-wI-ckP"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sGV-Fd-8ef"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ssy-Vm-Jfe"/>
-                            <constraint firstAttribute="trailing" secondItem="6Bg-la-emb" secondAttribute="trailing" constant="20" symbolic="YES" id="tHY-2G-ohV"/>
-                            <constraint firstItem="6Bg-la-emb" firstAttribute="bottom" secondItem="jKk-q1-lm6" secondAttribute="bottom" id="zDJ-qd-EaW"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -138,19 +115,6 @@
                                 <exclude reference="Pdg-sT-DzZ"/>
                                 <exclude reference="Rvr-P0-FWr"/>
                                 <exclude reference="nYz-dk-oRe"/>
-                                <exclude reference="1Mt-QD-m2X"/>
-                                <exclude reference="KU0-Hn-CKE"/>
-                                <exclude reference="OhT-c8-dqr"/>
-                                <exclude reference="Wm8-JW-rhb"/>
-                                <exclude reference="dtY-Fx-xNq"/>
-                                <exclude reference="qol-wI-ckP"/>
-                                <exclude reference="sGV-Fd-8ef"/>
-                                <exclude reference="ssy-Vm-Jfe"/>
-                                <exclude reference="tHY-2G-ohV"/>
-                                <exclude reference="zDJ-qd-EaW"/>
-                                <exclude reference="0kH-vS-AZE"/>
-                                <exclude reference="gHt-Us-N0T"/>
-                                <exclude reference="eRb-B4-LcA"/>
                             </mask>
                         </variation>
                     </view>

@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterTableView.hidden = true
 //        generateData()
         // ...
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
@@ -96,6 +97,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(okAction)
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func noImageSelectedAlert() {
+        let noImageAlertController = UIAlertController(title: "", message: "You have to select an image before uploading", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        noImageAlertController.addAction(okAction)
+        self.presentViewController(noImageAlertController, animated: true, completion: nil)
     }
     
 // MARK: @IBActions
