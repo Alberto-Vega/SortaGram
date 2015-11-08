@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-q1-lm6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="flowers" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-q1-lm6">
                                 <rect key="frame" x="120" y="20" width="360" height="360"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0126279194" green="0.42399219069999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Zo-aQ-GWt">
-                                <rect key="frame" x="0.0" y="381" width="600" height="128"/>
+                                <rect key="frame" x="0.0" y="580" width="600" height="128"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="4Gi-tf-VKH"/>
@@ -43,7 +43,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SiZ-8B-4Wc">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="SiZ-8B-4Wc">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="74"/>
                                                     <animations/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,6 +103,7 @@
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="Pdg-sT-DzZ"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rvr-P0-FWr"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="SEa-af-Pxw"/>
+                            <constraint firstItem="2Zo-aQ-GWt" firstAttribute="top" secondItem="jKk-q1-lm6" secondAttribute="bottom" constant="200" id="SVt-xC-BS4"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="dC2-RR-tde"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="geW-vH-dqK"/>
                             <constraint firstItem="jKk-q1-lm6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jR7-kl-awd"/>
@@ -115,11 +116,13 @@
                                 <exclude reference="Pdg-sT-DzZ"/>
                                 <exclude reference="Rvr-P0-FWr"/>
                                 <exclude reference="nYz-dk-oRe"/>
+                                <exclude reference="L6A-pz-B10"/>
                             </mask>
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Detail" id="fro-bb-xQy"/>
                     <connections>
+                        <outlet property="filterCollectionViewTopConstraint" destination="SVt-xC-BS4" id="Ln7-Y9-YWk"/>
                         <outlet property="filterTableView" destination="2Zo-aQ-GWt" id="buA-QW-G8J"/>
                         <outlet property="imageView" destination="jKk-q1-lm6" id="bpT-6c-1Sy"/>
                     </connections>
@@ -221,4 +224,8 @@
             <point key="canvasLocation" x="435" y="342"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ImagePlaceholder" width="100" height="100"/>
+        <image name="flowers" width="488" height="500"/>
+    </resources>
 </document>

@@ -14,7 +14,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterTableView: UICollectionView!
-    
+    @IBOutlet weak var filterCollectionViewTopConstraint: NSLayoutConstraint!
 //    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
    
     var currentPhoto: UIImage? {
@@ -26,7 +26,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterTableView.hidden = true
 //        generateData()
         // ...
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
@@ -40,6 +39,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapView:")
         imageView.gestureRecognizers = [tapGesture]
+        
+//        filterTableView.userInteractionEnabled = true
+//        let cellTapGesture = UITapGestureRecognizer(target: self, action: "tapView:")
+        
+        
     }
     
     func tapView(gesture: UITapGestureRecognizer) {
@@ -48,6 +52,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else {
             self.presentImagePickerFor(.PhotoLibrary)
         }
+    }
+    
+    func tapCell(gesture: UITapGestureRecognizer) {
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,6 +135,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     @IBAction func filtersButtonPressed(sender: UIButton) {
+        self.filterCollectionViewTopConstraint.constant = 2
+        UIView.animateWithDuration(1.0) { () -> Void in
+            self.view.layoutIfNeeded()
+        }
         
         print("presenteing alert")
     }
@@ -193,7 +205,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = filterTableView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell
+            
+        currentPhoto = cell.filteredThumbnalImageView.image
         
+        self.filterCollectionViewTopConstraint.constant = 200
+        UIView.animateWithDuration(1.0) { () -> Void in
+            self.view.layoutIfNeeded()
+
+        }
     }
    
 //MARK: Filters
