@@ -12,7 +12,7 @@ import Parse
 typealias completionHandler = ([Status]?) ->([Status])
 
 class PFObjectParser {
-
+    
     class func convertObjectsToStatuses(objects:[PFObject]?, callback: completionHandler) {
         
         if let objects = objects {
@@ -29,17 +29,12 @@ class PFObjectParser {
                             let status = Status(image: image, statusUpdate: nil)
                             statusArray.append(status)
                             print(statusArray.count)
-                            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                                                    galleryCollectionView.reloadData()
-                            })
                             print(image)
                             print("The status array in the parser: \(statusArray.count)")
                         }
                     }
                     callback(statusArray); return
-
                 })//getDataInBackgroundWithBlock - end
-
             }
         }
     }

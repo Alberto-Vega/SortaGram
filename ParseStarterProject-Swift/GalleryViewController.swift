@@ -30,7 +30,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             galleryCollectionView.reloadData()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +40,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         galleryCollectionView.userInteractionEnabled = true
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinchView:")
         galleryCollectionView.gestureRecognizers = [pinchGesture]
-
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,23 +59,20 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
             if let objects = objects {
                 print("These are the objects fectched by the API: \(objects.count)")
                 PFObjectParser.convertObjectsToStatuses(objects, callback: self.returnArrayOfStatus)
-
             }
         }
     }
     
-  func returnArrayOfStatus(returnArray:[Status]?) -> ([Status]) {
-    print("Callback returnArray count \(returnArray!.count)")
-    if let returnArray = returnArray {
-        statuses.appendContentsOf(returnArray)
-        print("The array statuses in collection view has: \(statuses.count)")
-    }
-    return statuses
-
+    func returnArrayOfStatus(returnArray:[Status]?) -> ([Status]) {
+        print("Callback returnArray count \(returnArray!.count)")
+        if let returnArray = returnArray {
+            statuses.appendContentsOf(returnArray)
+            print("The array statuses in collection view has: \(statuses.count)")
+        }
+        return statuses
     }
     
     // MARK: PinchGestureRecognizer setup
-    
     
     func pinchView(recognizer: UIPinchGestureRecognizer) {
         self.cellSize = self.cellSize / recognizer.scale
@@ -94,7 +90,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as! CustomCollectionViewCell
-        
         let image = self.statuses[indexPath.row].image
         cell.imageView.image = image
         
@@ -105,26 +100,14 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let delegate = self.delegate {
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell
-            
             if let image = cell.imageView.image {
                 
-            delegate.galleryViewControllerDidFinish(image)
-           
+                delegate.galleryViewControllerDidFinish(image)
+            }
         }
-    }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSizeMake(100.0 * self.cellSize, 100.0 * self.cellSize)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

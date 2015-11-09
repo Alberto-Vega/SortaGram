@@ -43,23 +43,7 @@ class API {
                     var fetchedStatusArray = [PFObject]()
                     for object in objects {
                         print("Succeeded downloading \(object.objectId)")
-                        
                         fetchedStatusArray.append(object)
-//                    // Converting PFObject into UIImage
-//                        let thumbNail = object["image"] as! PFFile
-//                        thumbNail.getDataInBackgroundWithBlock({(imageData: NSData?, error: NSError?) -> Void in
-//                            if (error == nil) {
-//                                if let image = UIImage(data:imageData!) {
-//                                    //image object implementation
-//                                    self.images.append(image)
-//                                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                                        self.galleryCollectionView.reloadData()
-//                                    })
-//                                    print(image)
-//                                }
-//                            }
-//                            
-//                        })//getDataInBackgroundWithBlock - end
                     }
                     print("We have downloaded \(fetchedStatusArray.count) PFObjects")
                     completion(objects: fetchedStatusArray)
@@ -70,5 +54,4 @@ class API {
             }
         }
     }
-    
 }

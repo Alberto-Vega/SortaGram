@@ -15,10 +15,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterTableView: UICollectionView!
     @IBOutlet weak var filterCollectionViewTopConstraint: NSLayoutConstraint!
-//    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
     @IBOutlet weak var uploadImageButton: UIButton!
-   
     @IBOutlet weak var applyFiltersButton: UIButton!
+    
     var currentPhoto: UIImage? {
         didSet {
             filterTableView.reloadData()
@@ -30,8 +29,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        generateData()
-        // ...
+        
         if let tabBarController = self.tabBarController, viewControllers = tabBarController.viewControllers {
             if let galleryViewController = viewControllers[1] as? GalleryViewController {
                 galleryViewController.delegate = self
@@ -52,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.presentImagePickerFor(.PhotoLibrary)
         }
     }
-   
+    
     override func viewWillAppear(animated: Bool) {
         
         self.imageView.image = self.defaultImagePlaceholder
@@ -64,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Set this View Controllers image to image
         self.currentPhoto = image
         self.imageView.image = self.currentPhoto
-        // Get tabBar controller.
+        // Get tabBar controller to change index
         self.tabBarController?.selectedIndex = 0
     }
     
@@ -103,21 +101,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func noImageSelectedAlert() {
+        
         let noImageAlertController = UIAlertController(title: "", message: "You have to select an image before uploading", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         noImageAlertController.addAction(okAction)
         self.presentViewController(noImageAlertController, animated: true, completion: nil)
     }
     
-// MARK: @IBActions
-    
-    @IBAction func addImageButtonSelected(sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            self.presentActionSheet()
-        } else {
-            self.presentImagePickerFor(.PhotoLibrary)
-        }
-    }
+    // MARK: @IBActions
     
     @IBAction func AddImagePressed(sender: UITapGestureRecognizer) {
         print("Image Tapped")
@@ -129,14 +120,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func filtersButtonPressed(sender: UIButton) {
-         self.filterCollectionViewTopConstraint.constant = 2
+        self.filterCollectionViewTopConstraint.constant = 2
         
         UIView.animateWithDuration(1.0) { () -> Void in
             self.view.layoutIfNeeded()
             self.applyFiltersButton.hidden = true
             self.uploadImageButton.hidden = true
         }
-        print("presenteing alert")
     }
     
     @IBAction func uploadImageButtonPressed(sender: UIButton) {
@@ -152,12 +142,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else {
             noImageSelectedAlert()
             sender.enabled = true
-
         }
         
     }
     
-      // MARK: UIImagePickerController Delegate
+    // MARK: UIImagePickerController Delegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         currentPhoto = image
@@ -187,13 +176,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cell.filteredThumbnalImageView.image = nil
         
         if let currentPhoto = currentPhoto {
-        setupFilteredCell(indexPath.row, image: currentPhoto, callback: { (filteredImage) -> () in
+            setupFilteredCell(indexPath.row, image: currentPhoto, callback: { (filteredImage) -> () in
+                
                 cell.filteredThumbnalImageView.image = filteredImage
+                cell.filteredFullSizeImage = filteredImage
+                
             })
         }
         return cell
     }
-
+    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
@@ -201,14 +193,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let size = (screenSize.width / 3) - 7
         imageView.image = currentPhoto
-
+        
         return CGSizeMake(size, size)
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = filterTableView.cellForItemAtIndexPath(indexPath) as! CustomCollectionViewCell
-            
-        currentPhoto = cell.filteredThumbnalImageView.image
+        
+        currentPhoto = cell.filteredFullSizeImage
         
         self.filterCollectionViewTopConstraint.constant = 200
         UIView.animateWithDuration(1.0) { () -> Void in
@@ -216,33 +208,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             self.applyFiltersButton.hidden = false
             self.uploadImageButton.hidden = false
-
+            
         }
     }
-   
-//MARK: Filters
+    
+    //MARK: Filters
     
     func setupFilteredCell(indexPath: Int, image: UIImage, callback:(UIImage?) -> ()) {
-    switch indexPath {
-    case 0:
-        FilterService.applyBWEfect(image, completion: { (filteredImage, name) -> Void in
+        switch indexPath {
+        case 0:
+            FilterService.applyBWEfect(image, completion: { (filteredImage, name) -> Void in
                 callback(filteredImage)
-        })
-    case 1:
-        FilterService.applyChromeEffect(image, completion: { (filteredImage, name) -> Void in
-            callback(filteredImage)
-
-        })
-    case 2:
-        FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
-            callback(filteredImage)
-        })
-//    case 3:
-//        FilterService.applyStarShineEffect(image, completion: { (filteredImage, name) -> Void in
-//            callback(filteredImage)
-//        })
-  
-    default: print("Filter outbounds")
+            })
+            
+        case 1:
+            FilterService.applyChromeEffect(image, completion: { (filteredImage, name) -> Void in
+                callback(filteredImage)
+                
+            })
+        case 2:
+            FilterService.applyVintageEffect(image, completion: { (filteredImage, name) -> Void in
+                callback(filteredImage)
+            })
+            
+        default: print("Filter outbounds")
+        }
     }
- }
 }
