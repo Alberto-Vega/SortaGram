@@ -43,11 +43,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imageView.userInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: "tapView:")
         imageView.gestureRecognizers = [tapGesture]
-        
-//        filterTableView.userInteractionEnabled = true
-//        let cellTapGesture = UITapGestureRecognizer(target: self, action: "tapView:")
-        
-        
     }
     
     func tapView(gesture: UITapGestureRecognizer) {
@@ -57,16 +52,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.presentImagePickerFor(.PhotoLibrary)
         }
     }
-    
-    func tapCell(gesture: UITapGestureRecognizer) {
-        
-    }
-    
+   
     override func viewWillAppear(animated: Bool) {
         
         self.imageView.image = self.defaultImagePlaceholder
         self.filterTableView.reloadData()
-
     }
     
     func galleryViewControllerDidFinish(image: UIImage) {
@@ -81,7 +71,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
     // MARK: UIAlert
@@ -137,9 +126,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else {
             self.presentImagePickerFor(.PhotoLibrary)
         }
-
-        
     }
+    
     @IBAction func filtersButtonPressed(sender: UIButton) {
          self.filterCollectionViewTopConstraint.constant = 2
         
@@ -148,7 +136,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.applyFiltersButton.hidden = true
             self.uploadImageButton.hidden = true
         }
-        
         print("presenteing alert")
     }
     
@@ -162,7 +149,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.presentAlertView()
                 }
             }
+        } else {
+            noImageSelectedAlert()
+            sender.enabled = true
+
         }
+        
     }
     
       // MARK: UIImagePickerController Delegate

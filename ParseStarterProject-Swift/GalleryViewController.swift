@@ -12,7 +12,6 @@ import Parse
 protocol GalleryVCDelegate {
     
     func galleryViewControllerDidFinish(image: UIImage)
-       
 }
 
 class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -54,42 +53,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         print("The statuses in view will appear :\(statuses)")
         fetchStatusObjectsFromParse()
         self.galleryCollectionView.reloadData()
-//        
-//        let query = PFQuery(className:"Status")
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            
-//            if error == nil {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects!.count) scores.")
-//                // Do something with the found objects
-//                if let objects = objects {
-//                    for object in objects {
-//                        print("Succeeded downloading \(object.objectId)")
-//                        
-//                        let thumbNail = object["image"] as! PFFile
-//                        
-//                        thumbNail.getDataInBackgroundWithBlock({(imageData: NSData?, error: NSError?) -> Void in
-//                            if (error == nil) {
-//                                if let image = UIImage(data:imageData!) {
-//                                //image object implementation
-//                                self.images.append(image)
-//                                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//                                    self.galleryCollectionView.reloadData()
-//                                })
-//                                print(image)
-//                                }
-//                            }
-//                            
-//                        })//getDataInBackgroundWithBlock - end
-//                    }
-//                    print("We have \(self.images.count) images")
-//                }
-//            } else {
-//                // Log details of the failure
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//        }
     }
     
     func fetchStatusObjectsFromParse() {
@@ -100,8 +63,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
             }
         }
-        galleryCollectionView.reloadData()
-
     }
     
   func returnArrayOfStatus(returnArray:[Status]?) -> ([Status]) {
