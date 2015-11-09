@@ -19,7 +19,11 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     var images = [UIImage]()
-    var statuses = [Status]()
+    var statuses = [Status]() {
+        didSet {
+            self.galleryCollectionView.reloadData()
+        }
+    }
     
     var delegate:GalleryVCDelegate?
     var cellSize: CGFloat = 1.0 {
@@ -49,6 +53,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewWillAppear(animated)
         print("The statuses in view will appear :\(statuses)")
         fetchStatusObjectsFromParse()
+        self.galleryCollectionView.reloadData()
 //        
 //        let query = PFQuery(className:"Status")
 //        query.findObjectsInBackgroundWithBlock {
@@ -95,14 +100,18 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
             }
         }
+        galleryCollectionView.reloadData()
+
     }
     
   func returnArrayOfStatus(returnArray:[Status]?) -> ([Status]) {
+    print("Callback returnArray count \(returnArray!.count)")
     if let returnArray = returnArray {
         statuses.appendContentsOf(returnArray)
-        print("The array statuses in collection view has: \(statuses)")
+        print("The array statuses in collection view has: \(statuses.count)")
     }
     return statuses
+
     }
     
     // MARK: PinchGestureRecognizer setup

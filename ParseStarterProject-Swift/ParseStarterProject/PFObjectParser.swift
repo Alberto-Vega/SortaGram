@@ -28,16 +28,19 @@ class PFObjectParser {
                             //image object implementation
                             let status = Status(image: image, statusUpdate: nil)
                             statusArray.append(status)
+                            print(statusArray.count)
                             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                                //                    self.galleryCollectionView.reloadData()
+//                                                    galleryCollectionView.reloadData()
                             })
                             print(image)
-                            print("The status array in the parser: \(statusArray)")
+                            print("The status array in the parser: \(statusArray.count)")
                         }
                     }
+                    callback(statusArray); return
+
                 })//getDataInBackgroundWithBlock - end
+
             }
-            callback(statusArray); return
         }
     }
 }
