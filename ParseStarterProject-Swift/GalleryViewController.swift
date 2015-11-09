@@ -47,7 +47,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("The statuses in view will appear :\(statuses)")
+        fetchStatusObjectsFromParse()
 //        
 //        let query = PFQuery(className:"Status")
 //        query.findObjectsInBackgroundWithBlock {
@@ -89,11 +90,19 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     func fetchStatusObjectsFromParse() {
         API.fetchStatusObjects { (objects) -> () in
             if let objects = objects {
-                PFObjectParser.convertObjectsToStatuses(objects, completion: { (statusArray) -> () in
-                    if let statusArray = statusArray { self.statuses = statusArray }
-                })
+                print("These are the objects fectched by the API: \(objects.count)")
+                PFObjectParser.convertObjectsToStatuses(objects, callback: self.returnArrayOfStatus)
+
             }
         }
+    }
+    
+  func returnArrayOfStatus(returnArray:[Status]?) -> ([Status]) {
+    if let returnArray = returnArray {
+        statuses.appendContentsOf(returnArray)
+        print("The array statuses in collection view has: \(statuses)")
+    }
+    return statuses
     }
     
     // MARK: PinchGestureRecognizer setup
@@ -108,15 +117,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: - UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
-        return self.images.count
+        print("number of items in section \(self.statuses.count)")
+        return self.statuses.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CustomCollectionViewCell.identifier(), forIndexPath: indexPath) as! CustomCollectionViewCell
         
-        let image = self.images[indexPath.row]
+        let image = self.statuses[indexPath.row].image
         cell.imageView.image = image
         
         return cell
