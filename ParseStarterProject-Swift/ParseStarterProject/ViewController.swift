@@ -16,13 +16,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var filterTableView: UICollectionView!
     @IBOutlet weak var filterCollectionViewTopConstraint: NSLayoutConstraint!
 //    var filters:[(UIImage, (filteredImage: UIImage?, name: String) -> Void)] = []
+    @IBOutlet weak var uploadImageButton: UIButton!
    
+    @IBOutlet weak var applyFiltersButton: UIButton!
     var currentPhoto: UIImage? {
         didSet {
             filterTableView.reloadData()
             imageView.image = currentPhoto
         }
     }
+    
+    let defaultImagePlaceholder = UIImage(named: "flowers")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        self.imageView.image = self.defaultImagePlaceholder
         self.filterTableView.reloadData()
 
     }
@@ -135,9 +141,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     @IBAction func filtersButtonPressed(sender: UIButton) {
-        self.filterCollectionViewTopConstraint.constant = 2
+         self.filterCollectionViewTopConstraint.constant = 2
+        
         UIView.animateWithDuration(1.0) { () -> Void in
             self.view.layoutIfNeeded()
+            self.applyFiltersButton.hidden = true
+            self.uploadImageButton.hidden = true
         }
         
         print("presenteing alert")
@@ -212,6 +221,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.filterCollectionViewTopConstraint.constant = 200
         UIView.animateWithDuration(1.0) { () -> Void in
             self.view.layoutIfNeeded()
+            
+            self.applyFiltersButton.hidden = false
+            self.uploadImageButton.hidden = false
 
         }
     }
