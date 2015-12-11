@@ -10,9 +10,11 @@ import UIKit
 
 class Status {
     let image: UIImage?
+    let statusUpdate: String?
     
-    init(image: UIImage) {
+    init(image: UIImage, statusUpdate: String?) {
         self.image = image
+        self.statusUpdate = statusUpdate
     }
     
 }
