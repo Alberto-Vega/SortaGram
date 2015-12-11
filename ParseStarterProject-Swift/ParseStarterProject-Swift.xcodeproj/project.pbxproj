@@ -17,17 +17,17 @@
 		81BA81791A49E0DB00E65899 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA81781A49E0DB00E65899 /* AudioToolbox.framework */; };
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
-		BF432FFA1BE840D100D0E183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFB1BE8416300D0E183 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
-		BF432FFE1BE85A7900D0E183 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFD1BE85A7900D0E183 /* API.swift */; settings = {ASSET_TAGS = (); }; };
-		BF4330001BE9271E00D0E183 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFF1BE9271E00D0E183 /* FilterService.swift */; settings = {ASSET_TAGS = (); }; };
-		BF4330021BE9317E00D0E183 /* ImageResizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4330011BE9317E00D0E183 /* ImageResizerExtension.swift */; settings = {ASSET_TAGS = (); }; };
-		BF730CF31BEF0C97005317B7 /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = BF730CF21BEF0C97005317B7 /* photos.png */; settings = {ASSET_TAGS = (); }; };
-		BF7CA8551BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		BF7CA8591BEABE5F008ACAD2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		BF7CA85C1BEAC56C008ACAD2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA85B1BEAC56C008ACAD2 /* Status.swift */; settings = {ASSET_TAGS = (); }; };
-		BF7CA8981BEBE1B2008ACAD2 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */; settings = {ASSET_TAGS = (); }; };
-		BF97CB0C1BF00D5900C28ACC /* PFObjectParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97CB0B1BF00D5900C28ACC /* PFObjectParser.swift */; settings = {ASSET_TAGS = (); }; };
+		BF432FFA1BE840D100D0E183 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF432FF91BE840D100D0E183 /* Launch Screen.storyboard */; };
+		BF432FFC1BE8416300D0E183 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFB1BE8416300D0E183 /* Constants.swift */; };
+		BF432FFE1BE85A7900D0E183 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFD1BE85A7900D0E183 /* API.swift */; };
+		BF4330001BE9271E00D0E183 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF432FFF1BE9271E00D0E183 /* FilterService.swift */; };
+		BF4330021BE9317E00D0E183 /* ImageResizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4330011BE9317E00D0E183 /* ImageResizerExtension.swift */; };
+		BF730CF31BEF0C97005317B7 /* photos.png in Resources */ = {isa = PBXBuildFile; fileRef = BF730CF21BEF0C97005317B7 /* photos.png */; };
+		BF7CA8551BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */; };
+		BF7CA8591BEABE5F008ACAD2 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */; };
+		BF7CA85C1BEAC56C008ACAD2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA85B1BEAC56C008ACAD2 /* Status.swift */; };
+		BF7CA8981BEBE1B2008ACAD2 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */; };
+		BF97CB0C1BF00D5900C28ACC /* PFObjectParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF97CB0B1BF00D5900C28ACC /* PFObjectParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +58,7 @@
 		BF7CA85B1BEAC56C008ACAD2 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
 		BF97CB0B1BF00D5900C28ACC /* PFObjectParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFObjectParser.swift; sourceTree = "<group>"; };
+		BFFD8DC81C1A6AC30013EA0B /* PalindromeTester copy.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "PalindromeTester copy.playground"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 		81BA813C1A49DA1800E65899 = {
 			isa = PBXGroup;
 			children = (
+				BFFD8DC81C1A6AC30013EA0B /* PalindromeTester copy.playground */,
 				BF4CE71E1BE9868600F7ABE3 /* OddNumberFinder.playground */,
 				81BA81471A49DA1800E65899 /* ParseStarterProject */,
 				814C3AC51B69877600E307BB /* Resources */,
@@ -156,8 +158,6 @@
 			children = (
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				BF7CA8581BEABE5F008ACAD2 /* GalleryViewController.swift */,
-				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
-				BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				BF432FFB1BE8416300D0E183 /* Constants.swift */,
+				BF7CA8971BEBE1B2008ACAD2 /* CustomFlowLayout.swift */,
+				BF7CA8541BEAB5B9008ACAD2 /* CustomCollectionViewCell.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
